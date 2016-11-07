@@ -1,0 +1,75 @@
+////
+/// Typography
+/// Init typography basic settings
+/// @group Typography
+////
+
+///
+@import "./settings";
+///
+@import "../modules/icons";
+
+
+///
+$msuif-headers-h1-font-size: 				toem(46px);
+///
+$msuif-headers-h2-font-size: 				toem(32px);
+///
+$msuif-headers-h3-font-size: 				toem(24px);
+///
+$msuif-headers-h4-font-size: 				toem(22px);
+///
+$msuif-headers-h5-font-size: 				toem(18px);
+///
+$msuif-headers-h6-font-size: 				toem(16px);
+
+
+html,
+button {
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font: $msuif-font;
+  font-weight: 400;
+  color: $msuif-font-color;
+}
+
+h1 {
+  margin: 0;
+  font-size: $msuif-headers-h1-font-size;
+  font-weight: $msuif-font-weight-bold;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+h2 {
+  margin: 0;
+  font-size: $msuif-headers-h2-font-size;
+  line-height: 1.4;
+}
+
+h3 {
+  font-size: $msuif-headers-h3-font-size;
+}
+
+h4 {
+  font-size: $msuif-headers-h4-font-size;
+}
+
+h5 {
+  font-size: $msuif-headers-h5-font-size;
+}
+
+h6 {
+  font-size: $msuif-headers-h6-font-size;
+}
+
+strong {
+  font-weight: $msuif-font-weight-bold;
+}

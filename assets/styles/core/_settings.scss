@@ -1,0 +1,67 @@
+////
+/// Settings File
+/// Init fonts, backgrounds, wrappers, breakpoints and Transition variables
+/// @group Settings
+////
+
+
+/// Fonts ///
+///
+$msuif-font-size:                 16px;
+///
+$msuif-font-weight:               400;
+///
+$msuif-font-family:               Arial, "Helvetica Neue", Helvetica, sans-serif;
+///
+$msuif-font:                      $msuif-font-weight toem($msuif-font-size) $msuif-font-family;
+///
+$msuif-font-weight-light:         300;
+///
+$msuif-font-weight-regular:       $msuif-font-weight;
+///
+$msuif-font-weight-semibold:      600;
+///
+$msuif-font-weight-bold:          700;
+///
+$msuif-font-color:                #101010;
+///
+$msuif-font-color-bright:         #edede6;
+///
+$msuif-font-color-dark:           $msuif-font-color;
+///
+$msuif-font-color-white:          #fff;
+
+
+
+/// Background ///
+///
+$msuif-background:                $msuif-font-color-bright;
+///
+$msuif-background-bright:         $msuif-background;
+
+
+
+/// Wrapper ///
+///
+$msuif-wrapper-min-width:         torem(1200px);
+
+
+
+/// Breakpoints ///
+///
+$msuif-breakpoints: (
+  'desktop-fhd': (max-width: 1920px),
+  'desktop': (max-width: 1366px),
+  'ipad': (min-width: 1023px, max-width: 1024px),
+  'isdesktop': (min-width: 1024px),
+  'ismobile': (max-width: 1024px),
+  'iphone': (max-width: 980px)
+);
+
+
+
+/// Transition/Animation ///
+///
+$msuif-transition-duration:      0.25s;
+///
+$msuif-transition-timing:        ease;
