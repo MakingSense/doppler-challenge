@@ -34,6 +34,7 @@
   <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
   <meta name="msapplication-TileColor" content=""><!-- Add brand color -->
   <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <script src="./js/vendor/modernizr.custom.js"></script>
 </head>
 
 <body class="">
@@ -46,8 +47,32 @@
   <!-- /End of Header -->
 
   <!-- Content -->
-  <main role="main">
-  </main>
+  <div id="pt-main" class="pt-perspective">
+		<div class="pt-page pt-page-home">
+      <!-- build:include slide-home.html -->
+      <!-- /build -->
+    </div>
+		<div class="pt-page pt-page-01">
+      <!-- build:include slide-01.html -->
+      <!-- /build -->
+    </div>
+		<div class="pt-page pt-page-02-right">
+      <!-- build:include slide-02-right.html -->
+      <!-- /build -->
+    </div>
+		<div class="pt-page pt-page-02-left">
+      <!-- build:include slide-02-left.html -->
+      <!-- /build -->
+    </div>
+		<div class="pt-page pt-page-03-left">
+      <!-- build:include slide-03-left.html -->
+      <!-- /build -->
+    </div>
+		<div class="pt-page pt-page-03-right">
+      <!-- build:include slide-03-right.html -->
+      <!-- /build -->
+    </div>
+	</div>
   <!-- /End of Content -->
 
   <!-- Footer -->
@@ -60,6 +85,8 @@
   <script>
   window.jQuery || document.write('<script src="./js/vendor/jquery.min.js"><\/script>');
   </script>
+  <script src="./js/vendor/jquery.dlmenu.js"></script>
+  <script src="./js/pagetransitions.js"></script>
 </body>
 
 </html>

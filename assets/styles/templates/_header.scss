@@ -1,5 +1,8 @@
 header {
+  width: 100%;
   padding: 20px 50px;
+  position: absolute;
+  @include clearfix;
 
   a {
     color: #000;

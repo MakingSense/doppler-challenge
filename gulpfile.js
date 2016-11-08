@@ -42,6 +42,7 @@ var config = {
   }, // If this path gets changed, remember to update .gitignore with the proper path to ignore images and css
   folderAssets: {
     base: 'assets',
+    fonts: 'assets/fonts',
     styles: 'assets/styles',
     images: 'assets/img',
     js: 'assets/js'
@@ -56,7 +57,7 @@ var config = {
   postCSS: {
     processors : [
       autoprefixer({browsers: ['last 2 versions', '> 1%', 'last 3 iOS versions', 'Firefox > 20', 'ie 9']}),
-      mqpacker(), 
+      mqpacker(),
       cssnano(),
     ]
   },
@@ -76,7 +77,7 @@ var config = {
 
 // Sass tasks are divided for performance issues regarding dependencies
 // Sass Build task definition, only ran once
-gulp.task('sass:build', ['webfont', 'bowercopy'], function(){
+gulp.task('sass:build', ['webfont', 'bowercopy', 'font:copy'], function(){
 
   return gulp.src(config.folderAssets.styles + '/styles.scss')
     .pipe(sourcemaps.init())
@@ -91,7 +92,7 @@ gulp.task('sass:build', ['webfont', 'bowercopy'], function(){
 
 // Sass Watch task definition
 gulp.task('sass', function(){
-  
+
   return gulp.src(config.folderAssets.styles + '/styles.scss')
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
@@ -159,6 +160,10 @@ gulp.task('webfont', ['webfont:copy'], function(){
   return del([config.folderDev.fonts + '/*.scss']);
 });
 
+gulp.task('font:copy', function(){
+  return gulp.src([config.folderAssets.fonts + '/*'])
+  .pipe(gulp.dest(config.folderDev.fonts));
+});
 
 // Sassdoc generation Task definition
 // doc task generates documentation and starts a live visualization of the docs in a browser
@@ -261,7 +266,7 @@ gulp.task('run', ['clean', 'serve'], function (){
   gulp.watch(config.folderAssets.images + '/*.*', ['copy:images']);
   gulp.watch(config.folderAssets.js + '/*' , ['copy:js']);
   gulp.watch(config.folderAssets.base + '/templates/*.html', ['processHtml']);
-  gulp.watch(config.folderDev.js + '/*' , browserSync.reload({ stream: true })); 
+  gulp.watch(config.folderDev.js + '/*' , browserSync.reload({ stream: true }));
 });
 
 // Define build task

@@ -11,7 +11,7 @@
 
 
 ///
-$msuif-headers-h1-font-size: 				toem(46px);
+$msuif-headers-h1-font-size: 				toem(48px);
 ///
 $msuif-headers-h2-font-size: 				toem(32px);
 ///
@@ -42,24 +42,34 @@ h6 {
 
 h1 {
   margin: 0;
+  color: #FFF;
+  font-family: "proxima-nova-bold";
   font-size: $msuif-headers-h1-font-size;
-  font-weight: $msuif-font-weight-bold;
-  line-height: 1.2;
   text-transform: uppercase;
+
+  span {
+    font-family: "proxima-nova-light";
+  }
 }
 
 h2 {
   margin: 0;
   font-size: $msuif-headers-h2-font-size;
   line-height: 1.4;
+  text-transform: uppercase;
 }
 
 h3 {
+  margin: 0;
   font-size: $msuif-headers-h3-font-size;
+  text-transform: uppercase;
 }
 
 h4 {
+  margin: 0;
+  display: inline-block;
   font-size: $msuif-headers-h4-font-size;
+  text-transform: uppercase;
 }
 
 h5 {
@@ -67,9 +77,49 @@ h5 {
 }
 
 h6 {
+  font-family: "proxima-nova-bold";
   font-size: $msuif-headers-h6-font-size;
 }
 
 strong {
   font-weight: $msuif-font-weight-bold;
+}
+
+i {
+  font-family: "proxima-nova-italic";
+}
+
+p {
+  line-height: 1.5;
+  font-size: 18px;
+}
+
+@font-face {
+  font-family: "proxima-nova";
+  src: url('../fonts/ProximaNova-Regular.otf');
+}
+
+@font-face {
+  font-family: "proxima-nova-italic";
+  src: url('../fonts/ProximaNova-RegularItalic.otf');
+}
+
+@font-face {
+  font-family: "proxima-nova-bold";
+  src: url('../fonts/ProximaNova-Bold.otf');
+}
+
+@font-face {
+  font-family: "proxima-nova-bolder";
+  src: url('../fonts/ProximaNova-Extrabold.otf');
+}
+
+@font-face {
+  font-family: "proxima-nova-light";
+  src: url('../fonts/ProximaNova-Light.otf');
+}
+
+@font-face {
+  font-family: "hand-of-sean";
+  src: url('../fonts/HandOfSeanPro.otf');
 }
