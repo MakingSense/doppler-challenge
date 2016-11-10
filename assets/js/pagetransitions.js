@@ -3,6 +3,8 @@ var PageTransitions = (function() {
 	var $main = $( '#pt-main' ),
 		$pages = $main.children( 'div.pt-page' ),
 		$iterate = $( '.iterateEffects' ),
+		$pulsable = $( '.pulsable' ),
+		$pulsableBlack = $( '.pulsable-black' ),
 		pagesCount = $pages.length,
 		current = 'pt-page-home',
 		isAnimating = false,
@@ -26,15 +28,7 @@ var PageTransitions = (function() {
 			$page.data( 'originalClassList', $page.attr( 'class' ) );
 		} );
 
-		$pages.filter('.' + current).addClass( 'pt-page-current' );
-
-		$( '#dl-menu' ).dlmenu( {
-			animationClasses : { in : 'dl-animate-in-2', out : 'dl-animate-out-2' },
-			onLinkClick : function( el, ev ) {
-				ev.preventDefault();
-				nextPage( el.data( 'animation' ) );
-			}
-		} );
+		$pages.filter('.' + current).addClass( 'pt-page-current active' );
 
 		$iterate.on( 'click', function() {
 			var options = {};
@@ -47,10 +41,18 @@ var PageTransitions = (function() {
 			nextPage( options );
 		} );
 
+		$pulsable.on( 'click', function() {
+			$(this).addClass('pulse');
+		} );
+
+		$pulsableBlack.on( 'click', function() {
+			$(this).addClass('pulse-black');
+		} );
+
 	}
 
 	function nextPage( options ) {
-		var animation = (options.animation) ? options.animation : options;
+		var animation = options.animation;
 
 		if( isAnimating ) {
 			return false;
@@ -74,19 +76,19 @@ var PageTransitions = (function() {
 		switch( animation ) {
 
 			case 'left':
-				outClass = 'pt-page-moveToLeft';
+				outClass = 'pt-page-moveToLeft active-out';
 				inClass = 'pt-page-moveFromRight';
 				break;
 			case 'right':
-				outClass = 'pt-page-moveToRight';
+				outClass = 'pt-page-moveToRight active-out';
 				inClass = 'pt-page-moveFromLeft';
 				break;
 			case 'up':
-				outClass = 'pt-page-moveToTop';
+				outClass = 'pt-page-moveToTop active-out';
 				inClass = 'pt-page-moveFromBottom';
 				break;
 			case 'down':
-				outClass = 'pt-page-moveToBottom';
+				outClass = 'pt-page-moveToBottom active-out';
 				inClass = 'pt-page-moveFromTop';
 				break;
 
@@ -123,7 +125,7 @@ var PageTransitions = (function() {
 
 	function resetPage( $outpage, $inpage ) {
 		$outpage.attr( 'class', $outpage.data( 'originalClassList' ) );
-		$inpage.attr( 'class', $inpage.data( 'originalClassList' ) + ' pt-page-current' );
+		$inpage.attr( 'class', $inpage.data( 'originalClassList' ) + ' pt-page-current active' );
 	}
 
 	init();

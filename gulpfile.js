@@ -38,14 +38,16 @@ var config = {
     css: 'dev/css',
     fonts: 'dev/fonts',
     images: 'dev/img',
-    js: 'dev/js'
+    js: 'dev/js',
+    videos: 'dev/video'
   }, // If this path gets changed, remember to update .gitignore with the proper path to ignore images and css
   folderAssets: {
     base: 'assets',
     fonts: 'assets/fonts',
     styles: 'assets/styles',
     images: 'assets/img',
-    js: 'assets/js'
+    js: 'assets/js',
+    videos: 'assets/video'
   },
   folderBower: {
     base: 'bower_components',
@@ -241,6 +243,11 @@ gulp.task('copy:images', function() {
   .pipe(gulp.dest(config.folderDev.images));
 });
 
+gulp.task('copy:videos', function() {
+  return gulp.src([config.folderAssets.videos + '/**/*'])
+  .pipe(gulp.dest(config.folderDev.videos));
+});
+
 
 // Delete dev folder for cleaning
 gulp.task('clean', ['clean:fonts', 'clean:js', 'clean:libs', 'clean:bower']);
@@ -263,11 +270,12 @@ gulp.task('clean:bower', function() {
 gulp.task('run', ['clean', 'serve'], function (){
   gulp.watch(config.folderAssets.base + '/**/*.scss', ['sass']);
   gulp.watch(config.folderAssets.base + '/icons/*.svg', ['build']);
-  gulp.watch(config.folderAssets.images + '/*.*', ['copy:images']);
+  gulp.watch(config.folderAssets.images + '/*' , ['copy:images']);
   gulp.watch(config.folderAssets.js + '/*' , ['copy:js']);
+  gulp.watch(config.folderAssets.videos + '/*' , ['copy:videos']);
   gulp.watch(config.folderAssets.base + '/templates/*.html', ['processHtml']);
   gulp.watch(config.folderDev.js + '/*' , browserSync.reload({ stream: true }));
 });
 
 // Define build task
-gulp.task('build', ['sass:build', 'processHtml', 'copy:images', 'copy:js']);
+gulp.task('build', ['sass:build', 'processHtml', 'copy:images', 'copy:js', 'copy:videos']);

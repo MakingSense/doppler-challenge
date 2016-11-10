@@ -17,11 +17,11 @@ $msuif-headers-h2-font-size: 				toem(32px);
 ///
 $msuif-headers-h3-font-size: 				toem(24px);
 ///
-$msuif-headers-h4-font-size: 				toem(22px);
+$msuif-headers-h4-font-size: 				toem(20px);
 ///
 $msuif-headers-h5-font-size: 				toem(18px);
 ///
-$msuif-headers-h6-font-size: 				toem(16px);
+$msuif-headers-h6-font-size: 				toem(14px);
 
 
 html,
@@ -53,32 +53,34 @@ h1 {
 }
 
 h2 {
-  margin: 0;
+  margin: 20px 0 0;
+  font-family: "proxima-nova-bold";
   font-size: $msuif-headers-h2-font-size;
   line-height: 1.4;
   text-transform: uppercase;
 }
 
 h3 {
-  margin: 0;
   font-size: $msuif-headers-h3-font-size;
-  text-transform: uppercase;
 }
 
 h4 {
   margin: 0;
-  display: inline-block;
   font-size: $msuif-headers-h4-font-size;
   text-transform: uppercase;
 }
 
 h5 {
+  font-family: "proxima-nova-bold";
   font-size: $msuif-headers-h5-font-size;
 }
 
 h6 {
+  margin: 0;
+  display: inline-block;
   font-family: "proxima-nova-bold";
   font-size: $msuif-headers-h6-font-size;
+  text-transform: uppercase;
 }
 
 strong {
@@ -92,6 +94,11 @@ i {
 p {
   line-height: 1.5;
   font-size: 18px;
+}
+
+.ms-icon {
+  font-size: 26px;
+  padding: 10px;
 }
 
 @font-face {
