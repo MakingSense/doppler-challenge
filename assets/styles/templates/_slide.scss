@@ -73,23 +73,91 @@
       -webkit-border-radius: 40px;
       -moz-border-radius: 40px;
       border-radius: 40px;
-
-      &.submit {
-        color: #FBCB3B;
-        background-color: #000;
-        border: 2px solid #000;
-      }
     }
 
     input {
-			width: 50%;
-      border: 2px solid #FFF;
-			margin: 10px;
-      padding: 15px;
-      -webkit-border-radius: 40px;
-      -moz-border-radius: 40px;
-      border-radius: 40px;
+			&[type="email"] {
+				width: 50%;
+	      border: 2px solid #FFF;
+				margin: 10px;
+	      padding: 15px;
+	      -webkit-border-radius: 40px;
+	      -moz-border-radius: 40px;
+	      border-radius: 40px;
+
+				&::-webkit-input-placeholder {
+				   font-style: italic;
+				}
+				&:-moz-placeholder { /* Firefox 18- */
+				   font-style: italic;
+				}
+				&::-moz-placeholder {  /* Firefox 19+ */
+				   font-style: italic;
+				}
+				&:-ms-input-placeholder {
+				   font-style: italic;
+				}
+
+				&:focus {
+					outline: none;
+
+					&::-webkit-input-placeholder {
+					   font-style: normal;
+					}
+					&:-moz-placeholder { /* Firefox 18- */
+					   font-style: normal;
+					}
+					&::-moz-placeholder {  /* Firefox 19+ */
+					   font-style: normal;
+					}
+					&:-ms-input-placeholder {
+					   font-style: normal;
+					}
+				}
+			}
+
+			&[type="submit"] {
+				color: #FBCB3B;
+				background-color: #000;
+				border: 2px solid #000;
+				padding: 15px;
+				text-transform: uppercase;
+				-webkit-border-radius: 40px;
+				-moz-border-radius: 40px;
+				border-radius: 40px;
+			}
     }
+
+		form {
+			span {
+				color: #000;
+			}
+			.error {
+				&:after {
+					left: 13%;
+					top: 100%;
+			    background: #DF3434;
+			    color: #fff;
+			    content: '¡Ouch! Ingresa un email válido.';
+					font-size: 14px;
+					font-style: italic;
+			    padding: 8px;
+			    position: absolute;
+				}
+
+				&:before{
+					left: 13%;
+					top: 100%;
+			    border: solid;
+			    border-color: #DF3434 transparent;
+			    border-width: 0 6px 6px;
+			    content: "";
+					margin-top: -6px;
+					margin-left: 6px;
+			    position: absolute;
+				}
+			}
+		}
 
     a {
       color: #FFF;
@@ -102,7 +170,15 @@
     }
 
     .cursive {
-      font-family: "hand-of-sean";
+			color: #000;
+			font-family: "hand-of-sean";
+			margin-top: 0;
+
+			span.ms-icon {
+				color: #000;
+				padding: 0 0 20px 0;
+				font-size: 22px;
+			}
     }
 
 		section {

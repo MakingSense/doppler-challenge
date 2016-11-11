@@ -4,8 +4,7 @@ var PageTransitions = (function() {
 		$pages = $main.children( 'div.pt-page' ),
 		$iterate = $( '.iterateEffects' ),
 		$pulsable = $( '.pulsable' ),
-		$pulsableBlack = $( '.pulsable-black' ),
-		pagesCount = $pages.length,
+		$email = $('#email-input'),
 		current = 'pt-page-home',
 		isAnimating = false,
 		endCurrPage = false,
@@ -28,7 +27,7 @@ var PageTransitions = (function() {
 			$page.data( 'originalClassList', $page.attr( 'class' ) );
 		} );
 
-		$pages.filter('.' + current).addClass( 'pt-page-current active' );
+		$pages.filter('.' + current).addClass( 'pt-page-current active' ).find('video')[0].play();
 
 		$iterate.on( 'click', function() {
 			var options = {};
@@ -45,8 +44,13 @@ var PageTransitions = (function() {
 			$(this).addClass('pulse');
 		} );
 
-		$pulsableBlack.on( 'click', function() {
-			$(this).addClass('pulse-black');
+		$email.on( 'invalid', function() {
+			if ($email[0].validity.typeMismatch || $email[0].validity.valueMissing) {
+				$email[0].setCustomValidity(" ");
+				$email.parent().addClass('error');
+		  } else {
+				$email.parent().removeClass('error');
+		  }
 		} );
 
 	}
@@ -104,16 +108,12 @@ var PageTransitions = (function() {
 
 		$nextPage.addClass( inClass ).on( animEndEventName, function() {
 			$nextPage.off( animEndEventName );
+			$nextPage.find('video')[0].play()
 			endNextPage = true;
 			if( endCurrPage ) {
 				onEndAnimation( $currPage, $nextPage );
 			}
 		} );
-
-		if( !support ) {
-			onEndAnimation( $currPage, $nextPage );
-		}
-
 	}
 
 	function onEndAnimation( $outpage, $inpage ) {
@@ -126,6 +126,7 @@ var PageTransitions = (function() {
 	function resetPage( $outpage, $inpage ) {
 		$outpage.attr( 'class', $outpage.data( 'originalClassList' ) );
 		$inpage.attr( 'class', $inpage.data( 'originalClassList' ) + ' pt-page-current active' );
+		$outpage.find('video')[0].pause()
 	}
 
 	init();

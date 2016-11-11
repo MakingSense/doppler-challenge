@@ -1,3 +1,19 @@
-.pt-page-02-left.active {
+.pt-page-02-left {
+  h1, p, button, a, h5 {
+    opacity: 0;
+  }
 
+	&.active {
+    h1 {
+			animation: fadeIn 0.3s 0.2s ease-out forwards, moveFromTopShort 0.3s 0.2s ease-out forwards;
+		}
+
+    p, a, h5 {
+    	animation: fadeIn 0.35s 0.25s ease-out forwards;
+    }
+
+    button {
+      animation: fadeIn 0.3s 0.2s ease-out forwards, moveFromBottomShort 0.3s 0.2s ease-out forwards;
+    }
+  }
 }
