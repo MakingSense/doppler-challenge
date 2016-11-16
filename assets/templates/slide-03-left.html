@@ -1,19 +1,35 @@
-<video loop>
+<img src="img/pepe-mobile.jpg" class="mobile-only"/>
+<video loop class="desktop-only">
   <source src="video/pepe.mp4" type="video/mp4">
+  <source src="video/pepe.ogv" type="video/ogg">
+  <source src="video/pepe-hd.webm" type="video/webm">
+  <source src="video/pepe-sd.webm" type="video/webm">
 </video>
 <div class="overlay"></div>
 <div class="wrapper">
-  <h1>¡Felicitaciones! Eres el gran ganador</h1>
-  <p><span>Muy pocos llegan hasta aquí y tú lo has logrado. Déjanos tu Email y el lunes 6 de junio nos comunicaremos contigo para enviarte alguno de estos súper premios.</span></p>
-  <h2>1 año gratis en doppler</h2>
-  <h4>En planes mensuales</h4>
+  <section class="desktop-only">
+    <h1>¡Felicitaciones!</h1>
+    <h1>Eres el gran ganador</h1>
+    <p><span>Muy pocos llegan hasta aquí y tú lo has logrado. Déjanos tu Email y el lunes 6 de junio nos comunicaremos contigo para enviarte alguno de estos súper premios.</span></p>
+    <h2>1 año gratis en doppler</h2>
+    <h4>En planes mensuales</h4>
+  </section>
+  <section class="mobile-only">
+    <h1>¡Felicitaciones!</h1>
+    <p>Déjanos tu Email y el lunes 6 de junio nos comunicaremos contigo para enviarte alguno de estos súper premios.</p>
+    <h4>1 año gratis en doppler en planes mensuales</h4>
+  </section>
   <section>
     <h6>Productos para tu oficina</h6>
     <h6>Descuentos especiales en otras herramientas</h6>
     <h6>Asesorías gratuitas y personalizadas</h6>
   </section>
-  <form>
-    <span><input id="email-input" type="email" placeholder="Email" required></span>
-    <input type="submit" value="Quiero mi premio">
+  <form id="email-form">
+    <span class="message"><h5 class="cursive">¡Gracias por suscribirte!</h5></span>
+    <section>
+      <span><input id="email-input" type="email" placeholder="Email" required></span>
+      <input type="submit" value="Quiero mi premio">
+      <h5 class="cursive desktop-only"><span class="ms-icon icon-arrow-left-cursive"></span> Ingresa tu Email para recibir tu regalo</h5>
+    </section>
   </form>
 </div>

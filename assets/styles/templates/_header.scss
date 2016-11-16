@@ -2,6 +2,7 @@ header {
   width: 100%;
   padding: 20px 50px;
   position: absolute;
+  text-align: center;
   z-index: 1000;
   @include clearfix;
 
@@ -27,6 +28,27 @@ header {
 
     &.right {
       float: right;
+      font-size: 12px;
+      line-height: 30px;
+
+      span {
+        padding: 0 10px;
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+@include respond-to('ismobile') {
+  header {
+    a {
+      &.left {
+        float: none;
+      }
+
+      &.right {
+        display: none;
+      }
     }
   }
 }

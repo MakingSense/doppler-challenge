@@ -1,5 +1,5 @@
 /* animation sets */
-$moveDuration: 2s;
+$moveDuration: 2.5s;
 
 /* move from / to  */
 
@@ -95,9 +95,6 @@ $moveDuration: 2s;
 /* pulse */
 
 .active {
-	.pulse {
-		animation: pulse 1.3s ease-out forwards;
-	}
 	.pulse-down {
 		animation: pulseDown 1.2s ease infinite;
 	}
@@ -206,6 +203,32 @@ $moveDuration: 2s;
 }
 
 /* fade / scale */
+
+@-webkit-keyframes appear {
+	0% { opacity: 0; }
+	10% { opacity: 1; }
+	90% { opacity: 1; }
+	100% { opacity: 0; }
+}
+@keyframes appear {
+	0% { opacity: 0; }
+	10% { opacity: 1; }
+	90% { opacity: 1; }
+	100% { opacity: 0; }
+}
+
+@-webkit-keyframes disappear {
+	0% { opacity: 1; }
+	10% { opacity: 0; }
+	90% { opacity: 0; }
+	100% { opacity: 1; }
+}
+@keyframes disappear {
+	0% { opacity: 1; }
+	10% { opacity: 0; }
+	90% { opacity: 0; }
+	100% { opacity: 1; }
+}
 
 @-webkit-keyframes fade {
 	from { }
