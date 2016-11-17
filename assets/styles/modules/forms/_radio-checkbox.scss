@@ -1,0 +1,127 @@
+////
+/// Radio Buttons & Checkboxes
+/// @group Component - Radio Buttons & Checkboxes
+/// @author MS
+////
+
+///
+$rc-width: toem(20px) !default;
+///
+$rc-height: toem(20px) !default;
+///
+$rc-font-size: toem(16px) !default;
+///
+$rc-label-color: #000 !default;
+///
+$rc-marker-color: #fff !default;
+///
+$rc-background-color: #CD5C5C !default;
+///
+$rc-radio-marker: '\25CF' !default; // Unicode for '●'
+///
+$rc-checkbox-marker: '\2714' !default; // Unicode for '✔'
+///
+$rc-checkbox-border-radius: toem(3px) !default;
+
+
+/// Radio Buttons & Checkboxes
+/// Mixin that styles Radio buttons and
+/// Checkboxes with CSS only.
+/// @example
+///   [type="checkbox"],
+///   [type="radio"]{
+///     @include do-radio-checkbox('{type}', {label-color}, {marker-color}, {background-color});
+///   }
+@mixin do-radio-checkbox($type, $label-color, $marker-color, $background-color) {
+  // Default styles
+  &:checked,
+  &:not(:checked) {
+    position: absolute;
+    left: -9999px;
+
+    + label {
+      position: relative;
+      padding-left: $rc-width * 1.25;
+      line-height: $rc-height;
+      color: $label-color;
+      cursor: pointer;
+
+      // Not :checked state
+      &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: $rc-width;
+        height: $rc-height;
+        background-color: $background-color;
+        border: 1px dotted transparent;
+        transition: all $msuif-transition-duration $msuif-transition-timing;
+
+        @if $type == 'checkbox' {
+          border-radius: $rc-checkbox-border-radius
+        }
+
+        @if $type == 'radio' {
+          border-radius: toem(9999px);
+        }
+      }
+
+      // :checked state
+      &:after {
+        @if $type == 'radio' {
+          content: $rc-radio-marker;
+        }
+        @else if $type == 'checkbox' {
+          content: $rc-checkbox-marker;
+        }
+
+        position: absolute;
+        left: 0;
+        width: $rc-width;
+        font-size: $rc-font-size;
+        text-align: center;
+        color: $marker-color;
+        transition: transform #{$msuif-transition-duration / 2} $msuif-transition-timing;
+      }
+    }
+  }
+
+  // Marker transition on :checked
+  &:not(:checked) {
+    + label {
+      &:after {
+        opacity: 0;
+        transform: scale(0);
+      }
+    }
+  }
+
+  &:checked {
+    + label {
+      &:after {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+
+  // :disabled state
+  &:disabled {
+    &:checked,
+    &:not(:checked) {
+      + label {
+        opacity: 0.25;
+      }
+    }
+  }
+
+  // :focus state
+  &:focus,
+  &:hover {
+    + label {
+      &:before {
+        background-color: shade($background-color, 25%);
+      }
+    }
+  }
+}

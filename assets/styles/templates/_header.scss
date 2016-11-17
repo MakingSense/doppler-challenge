@@ -1,0 +1,54 @@
+header {
+  width: 100%;
+  padding: 20px 50px;
+  position: absolute;
+  text-align: center;
+  z-index: 1000;
+  @include clearfix;
+
+  a {
+    color: #000;
+    font-weight: bold;
+
+    span.icon-doppler {
+      padding: 0;
+    }
+
+    &:hover {
+      color: #000;
+    }
+
+    &:visited {
+      color: #000;
+    }
+
+    &.left {
+      float: left;
+    }
+
+    &.right {
+      float: right;
+      font-size: 12px;
+      line-height: 30px;
+
+      span {
+        padding: 0 10px;
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+@include respond-to('ismobile') {
+  header {
+    a {
+      &.left {
+        float: none;
+      }
+
+      &.right {
+        display: none;
+      }
+    }
+  }
+}

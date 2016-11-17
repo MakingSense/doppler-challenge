@@ -1,0 +1,71 @@
+////
+/// Tabs
+/// @group Component - Tabs
+/// @author MS
+////
+
+///
+$tabs-color-primary: #000 !default;
+///
+$tabs-color-secondary: #A1D045 !default;
+///
+$tabs-color-bg: $msuif-background !default;
+///
+$tabs-border: 1px solid $tabs-color-primary !default;
+///
+$tabs-base-spacing: 10px !default;
+
+
+/// Tabs Component - 
+/// This is an almost JS-free Tab component that takes
+/// advantage of `:target` event to display tabs content
+/// @example
+///   <div class="c-tabs">
+///     <a class="c-tabs__tab c-tabs__tab--is-active" href="#tab1">Tab 1</a>
+///     <a class="c-tabs__tab" href="#tab2">Tab 2</a>
+///     <a class="c-tabs__tab" href="#tab3">Tab 3</a>
+///     <div class="c-tabs__tab__content" id="tab1">
+///       <p>Tab 1 content</p>
+///     </div>
+///     <div class="c-tabs__tab__content" id="tab2">
+///       <p>Tab 2 content</p>
+///     </div>
+///     <div class="c-tabs__tab__content" id="tab3">
+///       <p><a href="#">Tab 3 content</a></p>
+///     </div>
+///   </div>
+///   
+///   // Also add this in the JS
+///   $('.c-tabs__tab').on('click',function(){$(this).addClass('c-tabs__tab--is-active').siblings('.c-tabs__tab').removeClass('c-tabs__tab--is-active')});
+@mixin c-tabs{
+  .c-tabs {
+    margin: $tabs-base-spacing * 2;
+
+    &__tab {
+      padding: $tabs-base-spacing;
+      color: $tabs-color-primary;
+      border: $tabs-border;
+
+      &:hover {
+        color: $tabs-color-secondary;
+      }
+
+      &--is-active {
+        color: $tabs-color-secondary;
+        border-bottom: 1px solid $tabs-color-bg;
+      }
+      
+      &__content {
+        display: none;
+        margin: ($tabs-base-spacing - 1px) 0;
+        padding: $tabs-base-spacing;
+        border: $tabs-border;
+        background-color: $tabs-color-bg;
+
+        &:target {
+          display: block;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+////
+/// Placeholders
+/// @group Placeholders
+/// @author Damian Muti
+////
+
+///
+@import "../core/settings";
+
+///
+%text--small {
+  font-size: 80%
+}
+///
+%text--left {
+  text-align: left
+}
+///
+%text--right {
+  text-align: right
+}
+///
+%text--center {
+  text-align: center
+}
+///
+%text--light {
+  font-weight: $msuif-font-weight-light
+}
+///
+%text--regular {
+  font-weight: $msuif-font-weight-regular
+}
+///
+%text--semibold {
+  font-weight: $msuif-font-weight-semibold
+}
+///
+%text--bold {
+  font-weight: $msuif-font-weight-bold
+}
+///
+%text--uppercase {
+  text-transform: uppercase
+}

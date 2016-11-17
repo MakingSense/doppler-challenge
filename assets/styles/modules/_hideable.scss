@@ -1,0 +1,46 @@
+////
+/// Hideable Elements
+/// @group Component - Hideable Element
+/// @author MS
+////
+///
+$translate-position: (
+  'top': translateY(-100%),
+  'bottom': translateY(100%),
+  'right': translateX(100%),
+  'left': translateX(-100%)
+);
+
+/// Hideable Element
+/// Mixin to make any element hideable using css transitions
+/// and a little bit of Js.
+/// @example
+///   .example_class {
+///     @include hide-to('top');
+///   }
+/// 
+///  $('body').scroll(function(e) {
+///      var target = e.currentTarget,
+///          self = $(target),
+///          $element = $('.element'),
+///          scrollTop = window.pageYOffset || target.scrollTop,
+///          lastScrollTop = self.data("lastScrollTop") || 0,
+///          scrollHeight = target.scrollHeight || document.body.scrollHeight;
+///      if (scrollTop > lastScrollTop && scrollTop > $element.outerHeight()) {
+///          // Scrolling down past element size
+///          $element.addClass('hide');
+///      } else {
+///          // Scrolling up
+///          $element.removeClass('hide');
+///      }
+///      //saves the current scrollTop
+///      self.data("lastScrollTop", scrollTop);
+///  });
+
+@mixin hide-to($position) {
+  transition: transform $msuif-transition-duration ease-in-out;
+
+  &.hide {
+    transform: map-get($translate-position, $position);
+  }
+}

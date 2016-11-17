@@ -1,0 +1,92 @@
+////
+/// Functions
+/// @group Functions
+/// @author Damian Muti
+////
+
+///
+@import "../core/settings";
+
+/// Convert to EMs function
+/// @param {Number} target - The value to be converted
+/// @param {Number} context [$msuif-font-size] The base font size 
+/// @return {Em} value
+@function toem($target, $context: $msuif-font-size) {
+   @if $target == 0 { @return 0 }
+   @return $target / $context + 0em;
+}
+
+/// Convert to REMs function
+/// @param {Number} target - The value to be converted
+/// @param {Number} context [$msuif-font-size] - The base font size 
+/// @return {Rem} value
+@function torem($target, $context: $msuif-font-size) {
+   @if $target == 0 { @return 0 }
+   @return $target / $context + 0rem;
+}
+
+/// Remove unit from value
+/// @param {Number} value - The entire value
+/// @return {Number} The striped value
+@function strip-unit($value) {
+	@return $value / ($value * 0 + 1);
+}
+
+/// Lighten a color
+/// @param {String | Color} color - The color to be lighten
+/// @param {Number} percentage - The percent to be lighten
+/// @return {String | Color} color
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+/// Darken a color
+/// @param {String | Color} color - The color to be darken
+/// @param {Number} percentage - The percent to be darken
+/// @return {String | Color} color
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+/// Explode a string in a PHP fashion
+/// @param {String} string - Target string
+/// @param {String} dem - Delimiter character
+/// @return {String} Exploded string
+@function explode($string,$dem) {
+  $list: ();
+  $sum: str-length($string);
+
+  @for $i from 1 through $sum {
+    $str: str-index($string,$dem);
+
+    @if str-length($string) >= 1 and $str == null {
+      $list: append($list,$string,comma);
+      $string: '';
+    }
+
+    @if type-of($str) == number {
+      $each: str-slice($string,0,($str - 1));
+      $list: append($list,$each,comma);
+      $string: str-slice($string,($str + 1), $sum);
+    }
+  }
+
+  @if length($list) > 1 {
+    @return '.' + nth($list, 2);
+  }
+  @else {
+    @return nth($list, 1);
+  }
+}
+
+/// Get values in a multidimentional map. Thanks to Hugo Giraudel
+/// @author Hugo Giraudel
+/// @param {map} $map - Map
+/// @param {arglist} $keys - Keys to fetch
+/// @return {*}
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+  @return $map;
+}

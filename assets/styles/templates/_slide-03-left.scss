@@ -1,0 +1,44 @@
+.pt-page-03-left { //felicitaciones
+  h1, h2, h4, p, button, a, section, input {
+    opacity: 0;
+  }
+
+	&.active {
+    h1, h2 {
+			animation: fadeIn 0.3s 0.2s ease-out forwards, moveFromTopShort 0.3s 0.2s ease-out forwards;
+		}
+
+    h4, h5, h6 {
+      animation: fadeIn 0.3s 0.2s ease-out forwards, moveFromBottomShort 0.3s 0.2s ease-out forwards;
+    }
+
+    p, a, section {
+    	animation: fadeIn 0.35s 0.25s ease-out forwards;
+    }
+
+    button {
+      animation: fadeIn 0.3s 0.2s ease-out forwards, moveFromBottomShort 0.3s 0.2s ease-out forwards;
+    }
+
+    input {
+      animation: fadeIn 0.3s 0.2s ease-out forwards, moveFromRightShort 0.3s 0.2s ease-out forwards;
+
+      &:first-child {
+        animation: fadeIn 0.3s 0.2s ease-out forwards, moveFromLeftShort 0.3s 0.2s ease-out forwards;
+      }
+    }
+
+    form {
+      &.success {
+        .message {
+          opacity: 0;
+          animation: appear 3s 0.2s ease forwards;
+        }
+
+        section {
+          animation: disappear 3.5s ease forwards;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,97 @@
+////
+/// Star Rating
+/// @group Component - Star Rating
+/// @author MS
+////
+
+@import "../libs/sassy-cast/SassyCast";
+
+///
+$rating-color-empty:     #ccc !default;
+///
+$rating-color-full:      gold !default;
+///
+$rating-values: (
+  '0.25', '0.50', '0.75', '1.00',
+  '1.25', '1.50', '1.75', '2.00',
+  '2.25', '2.50', '2.75', '3.00',
+  '3.25', '3.50', '3.75', '4.00',
+  '4.25', '4.50', '4.75', '5.00'
+);
+///
+$rating-icon-names: (
+  'quarter': '.icon-star-quarter',
+  'half': '.icon-star-half',
+  'three-quarters': '.icon-star-three-quarters',
+  'full': '.icon-star-full'
+);
+
+
+/// Star Rating Component - 
+/// This is a CSS-only star rating component
+/// that shows the proper rating depending
+/// on a data-attribute value.
+/// @example
+///   <div class="c-rating" data-rating-value="3.25">
+///     <span></span>
+///     <span></span>
+///     <span></span>
+///     <span></span>
+///     <span></span>
+///   </div>
+@mixin c-rating{
+  .c-rating {
+    display: inline-block;
+
+    span {
+      @extend .ms-icon;
+      @extend #{map-get($rating-icon-names, 'full')};
+
+      position: relative;
+      margin: 0 3px;
+      font-size: toem(16px);
+      color: $rating-color-empty;
+      transition: color $msuif-transition-duration $msuif-transition-timing;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
+    @each $rating-value in $rating-values {
+      // Get the next higher integer.
+      $rating-value-ceil: ceil(to-number($rating-value));
+
+      &[data-rating-value="#{unquote($rating-value)}"] {
+        span:nth-child(-n+#{$rating-value-ceil}) {
+          color: $rating-color-full;
+        }
+
+        span:nth-child(#{$rating-value-ceil}) {
+          @if explode($rating-value, '.') == '.25' {
+            @extend #{map-get($rating-icon-names, 'quarter')};
+          }
+          @else if explode($rating-value, '.') == '.50' {
+            @extend #{map-get($rating-icon-names, 'half')};
+          }
+          @else if explode($rating-value, '.') == '.75' {
+            @extend #{map-get($rating-icon-names, 'three-quarters')};
+          }
+
+          &:before {
+            position: relative;
+            z-index: 1;
+          }
+
+          &:after {
+            @extend .icon-star-full:before;
+            position: absolute;
+            left: 0;
+            z-index: 0;
+            color: $rating-color-empty;
+          }
+        }
+      }
+    }
+  }
+}
