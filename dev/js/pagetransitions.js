@@ -11,7 +11,7 @@ var PageTransitions = (function() {
 	var $main = $( '#pt-main' ),
 		$pages = $main.children( 'div.pt-page' ),
 		$iterate = $( '.iterateEffects' ),
-		$pulsable = $('.pulsable')
+		$pulsable = $('.pulsable'),
 		$email = $('#email-input'),
 		$form = $('#email-form'),
 		current = 'pt-page-home',
@@ -121,7 +121,8 @@ var PageTransitions = (function() {
 
 		$nextPage.addClass(inClass).on(animEndEventName, function() {
 			$nextPage.off(animEndEventName);
-			$nextPage.find('video')[0].play()
+			$nextPage.find('video')[0].play();
+			$currPage.find('.pulse').removeClass('pulse');
 			endNextPage = true;
 			if (endCurrPage) {
 				onEndAnimation( $currPage, $nextPage );
